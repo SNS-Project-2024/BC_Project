@@ -60,6 +60,7 @@ class DrawingApp(QMainWindow):
             except ConnectionResetError:
                 break
 
+
 def connect_to_server():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((SERVER_IP, SERVER_PORT))
