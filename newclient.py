@@ -1,7 +1,7 @@
 import sys
 import socket
 import threading
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsScene, QGraphicsView
+from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsScene, QGraphicsView, QVBoxLayout, QLineEdit, QPushButton, QWidget
 from PyQt5.QtGui import QPen, QColor
 from PyQt5.QtCore import Qt, pyqtSignal
 
@@ -36,6 +36,21 @@ class ClientDrawingApp(QMainWindow):
         self.scene.setSceneRect(0, 0, 800, 600)  # 서버와 동일한 범위
         self.view = CustomGraphicsView(self.scene, self)
         self.setCentralWidget(self.view)
+        
+        # 텍스트 입력 UI
+        self.message_input = QLineEdit(self)
+        self.message_input.setPlaceholderText("메시지를 입력하세요...")
+        self.send_button = QPushButton("전송", self)
+        self.send_button.clicked.connect(self.send_message)
+        
+        # 레이아웃 설정
+        central_widget = QWidget()
+        layout = QVBoxLayout()
+        layout.addWidget(self.view)
+        layout.addWidget(self.message_input)
+        layout.addWidget(self.send_button)
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
 
         # 시그널-슬롯 연결
         self.draw_signal.connect(self.view.add_line)
@@ -44,6 +59,16 @@ class ClientDrawingApp(QMainWindow):
         self.recv_thread = threading.Thread(target=self.receive_data)
         self.recv_thread.daemon = True
         self.recv_thread.start()
+        
+    def send_message(self):
+        message = self.message_input.text().strip()
+        if message:
+            try:
+                self.client_socket.sendall(f"MSG:{message}".encode())
+                print(f"서버로 메시지 전송: {message}")
+                self.message_input.clear()
+            except Exception as e:
+                print(f"메시지 전송 중 오류: {e}")
 
     def receive_data(self):
         buffer = ""  # 남은 데이터를 저장할 버퍼

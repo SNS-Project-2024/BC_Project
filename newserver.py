@@ -71,14 +71,41 @@ class ServerDrawingApp(QMainWindow):
             clients.append(client_socket)
             threading.Thread(target=self.handle_client, args=(client_socket,)).start()
 
+    # def handle_client(self, client_socket):
+    #     #클라이언트 데이터
+    #     while True:
+    #         try:
+    #             data = client_socket.recv(1024)
+    #             if not data:
+    #                 break
+    #             print(f"클라이언트로부터 데이터 수신: {data.decode()}")
+    #         except Exception as e:
+    #             print(f"클라이언트 처리 중 오류: {e}")
+    #             break
+    #     client_socket.close()
+    #     clients.remove(client_socket)
+    
     def handle_client(self, client_socket):
-        #클라이언트 데이터
         while True:
             try:
-                data = client_socket.recv(1024)
-                if not data:
+                data = client_socket.recv(1024).decode()
+                if not data:  # 클라이언트 연결 종료
                     break
-                print(f"클라이언트로부터 데이터 수신: {data.decode()}")
+
+                if data.startswith("MSG:"):
+                    # 클라이언트로부터 메시지 수신
+                    message = data[4:]
+                    print(f"클라이언트 메시지: {message}")
+
+                    # 다른 클라이언트에게 브로드캐스트 (선택 사항)
+                    self.broadcast(data.encode())
+                else:
+                    # 기존 데이터 처리 (예: LINE)
+                    if data.startswith("LINE:"):
+                        _, coords = data.split(":")
+                        x1, y1, x2, y2 = map(float, coords.split(","))
+                        self.view.add_line(x1, y1, x2, y2)
+                        self.broadcast(data.encode())
             except Exception as e:
                 print(f"클라이언트 처리 중 오류: {e}")
                 break

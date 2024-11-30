@@ -1,0 +1,279 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "QApplication",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMainWindow",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsScene",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsView",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QVBoxLayout",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QLineEdit",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QPushButton",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QWidget",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QApplication",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMainWindow",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsScene",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsView",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QVBoxLayout",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QPen",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QColor",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QPen",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QColor",
+        "importPath": "PyQt5.QtGui",
+        "description": "PyQt5.QtGui",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "pyqtSignal",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "PyQt5.QtCore",
+        "description": "PyQt5.QtCore",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "CustomGraphicsView",
+        "kind": 6,
+        "importPath": "newclient",
+        "description": "newclient",
+        "peekOfCode": "class CustomGraphicsView(QGraphicsView):\n    def __init__(self, scene, parent=None):\n        super().__init__(scene, parent)\n        self.setMouseTracking(True)\n        self.pen = QPen(QColor(Qt.black), 5)\n    def add_line(self, x1, y1, x2, y2):\n        #서버로 받은 그림 그리기\n        print(f\"add_line 호출됨: ({x1}, {y1}) -> ({x2}, {y2})\")\n        self.scene().addLine(x1, y1, x2, y2, self.pen)\n        self.scene().update()",
+        "detail": "newclient",
+        "documentation": {}
+    },
+    {
+        "label": "ClientDrawingApp",
+        "kind": 6,
+        "importPath": "newclient",
+        "description": "newclient",
+        "peekOfCode": "class ClientDrawingApp(QMainWindow):\n    draw_signal = pyqtSignal(float, float, float, float)\n    def __init__(self, client_socket):\n        super().__init__()\n        self.setWindowTitle(\"클라이언트 그림판 (수신 전용)\")\n        self.setGeometry(100, 100, 800, 600)\n        # 네트워크 설정\n        self.client_socket = client_socket\n        # 그래픽 설정\n        self.scene = QGraphicsScene()",
+        "detail": "newclient",
+        "documentation": {}
+    },
+    {
+        "label": "connect_to_server",
+        "kind": 2,
+        "importPath": "newclient",
+        "description": "newclient",
+        "peekOfCode": "def connect_to_server():\n    #서버 연결\n    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n    try:\n        client_socket.connect((\"127.0.0.1\", 9000))  # 서버 IP와 PORT\n        print(\"서버에 연결되었습니다.\")\n        return client_socket\n    except ConnectionRefusedError:\n        print(\"서버 연결 실패: 서버가 실행 중인지 확인하세요.\")\n        sys.exit(1)",
+        "detail": "newclient",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "newclient",
+        "description": "newclient",
+        "peekOfCode": "def main():\n    app = QApplication(sys.argv)\n    client_socket = connect_to_server()\n    window = ClientDrawingApp(client_socket)\n    window.show()\n    sys.exit(app.exec_())\nif __name__ == \"__main__\":\n    main()",
+        "detail": "newclient",
+        "documentation": {}
+    },
+    {
+        "label": "CustomGraphicsView",
+        "kind": 6,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "class CustomGraphicsView(QGraphicsView):\n    def __init__(self, scene, parent=None):\n        super().__init__(scene, parent)\n        self.setMouseTracking(True)\n        self.pen = QPen(QColor(Qt.black), 5)\n        self.last_point = None\n    def mousePressEvent(self, event):\n        if event.button() == Qt.LeftButton:\n            self.last_point = self.mapToScene(event.pos())\n    def mouseMoveEvent(self, event):",
+        "detail": "newserver",
+        "documentation": {}
+    },
+    {
+        "label": "ServerDrawingApp",
+        "kind": 6,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "class ServerDrawingApp(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.setWindowTitle(\"서버 그림판\")\n        self.setGeometry(100, 100, 800, 600)\n        # 그래픽 설정\n        self.scene = QGraphicsScene()\n        self.scene.setSceneRect(0, 0, 800, 600)\n        self.view = CustomGraphicsView(self.scene, self)\n        self.setCentralWidget(self.view)",
+        "detail": "newserver",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "def main():\n    app = QApplication([])\n    window = ServerDrawingApp()\n    window.show()\n    app.exec_()\nif __name__ == \"__main__\":\n    main()",
+        "detail": "newserver",
+        "documentation": {}
+    },
+    {
+        "label": "HOST",
+        "kind": 5,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "HOST = '0.0.0.0'\nPORT = 9000\nclients = []\nclass CustomGraphicsView(QGraphicsView):\n    def __init__(self, scene, parent=None):\n        super().__init__(scene, parent)\n        self.setMouseTracking(True)\n        self.pen = QPen(QColor(Qt.black), 5)\n        self.last_point = None\n    def mousePressEvent(self, event):",
+        "detail": "newserver",
+        "documentation": {}
+    },
+    {
+        "label": "PORT",
+        "kind": 5,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "PORT = 9000\nclients = []\nclass CustomGraphicsView(QGraphicsView):\n    def __init__(self, scene, parent=None):\n        super().__init__(scene, parent)\n        self.setMouseTracking(True)\n        self.pen = QPen(QColor(Qt.black), 5)\n        self.last_point = None\n    def mousePressEvent(self, event):\n        if event.button() == Qt.LeftButton:",
+        "detail": "newserver",
+        "documentation": {}
+    },
+    {
+        "label": "clients",
+        "kind": 5,
+        "importPath": "newserver",
+        "description": "newserver",
+        "peekOfCode": "clients = []\nclass CustomGraphicsView(QGraphicsView):\n    def __init__(self, scene, parent=None):\n        super().__init__(scene, parent)\n        self.setMouseTracking(True)\n        self.pen = QPen(QColor(Qt.black), 5)\n        self.last_point = None\n    def mousePressEvent(self, event):\n        if event.button() == Qt.LeftButton:\n            self.last_point = self.mapToScene(event.pos())",
+        "detail": "newserver",
+        "documentation": {}
+    }
+]
