@@ -236,7 +236,7 @@
         "kind": 6,
         "importPath": "newserver",
         "description": "newserver",
-        "peekOfCode": "class ServerDrawingApp(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.setWindowTitle(\"서버 그림판\")\n        self.setGeometry(100, 100, 800, 600)\n        # 그래픽 설정\n        self.scene = QGraphicsScene()\n        self.scene.setSceneRect(0, 0, 800, 600)\n        self.view = CustomGraphicsView(self.scene, self)\n        self.setCentralWidget(self.view)",
+        "peekOfCode": "class ServerDrawingApp(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.client_ids = {} \n        self.setWindowTitle(\"서버 그림판\")\n        self.setGeometry(100, 100, 800, 600)\n        # 그래픽 설정\n        self.scene = QGraphicsScene()\n        self.scene.setSceneRect(0, 0, 800, 600)\n        self.view = CustomGraphicsView(self.scene, self)",
         "detail": "newserver",
         "documentation": {}
     },

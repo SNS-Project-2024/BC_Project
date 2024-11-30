@@ -64,7 +64,7 @@ class ClientDrawingApp(QMainWindow):
         message = self.message_input.text().strip()
         if message:
             try:
-                self.client_socket.sendall(f"MSG:{message}".encode())
+                self.client_socket.sendall(f"{message}".encode())
                 print(f"서버로 메시지 전송: {message}")
                 self.message_input.clear()
             except Exception as e:

@@ -42,6 +42,7 @@ class CustomGraphicsView(QGraphicsView):
 class ServerDrawingApp(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.client_ids = {} 
         self.setWindowTitle("서버 그림판")
         self.setGeometry(100, 100, 800, 600)
 
@@ -68,49 +69,26 @@ class ServerDrawingApp(QMainWindow):
         while True:
             client_socket, addr = self.server_socket.accept()
             print(f"클라이언트 연결됨: {addr}")
+            client_id = f"{addr[1]}"
+            self.client_ids[client_socket] = client_id
             clients.append(client_socket)
             threading.Thread(target=self.handle_client, args=(client_socket,)).start()
-
-    # def handle_client(self, client_socket):
-    #     #클라이언트 데이터
-    #     while True:
-    #         try:
-    #             data = client_socket.recv(1024)
-    #             if not data:
-    #                 break
-    #             print(f"클라이언트로부터 데이터 수신: {data.decode()}")
-    #         except Exception as e:
-    #             print(f"클라이언트 처리 중 오류: {e}")
-    #             break
-    #     client_socket.close()
-    #     clients.remove(client_socket)
-    
+            
     def handle_client(self, client_socket):
+        client_id = self.client_ids[client_socket]
         while True:
             try:
                 data = client_socket.recv(1024).decode()
-                if not data:  # 클라이언트 연결 종료
+                if not data:
                     break
-
-                if data.startswith("MSG:"):
-                    # 클라이언트로부터 메시지 수신
-                    message = data[4:]
-                    print(f"클라이언트 메시지: {message}")
-
-                    # 다른 클라이언트에게 브로드캐스트 (선택 사항)
-                    self.broadcast(data.encode())
-                else:
-                    # 기존 데이터 처리 (예: LINE)
-                    if data.startswith("LINE:"):
-                        _, coords = data.split(":")
-                        x1, y1, x2, y2 = map(float, coords.split(","))
-                        self.view.add_line(x1, y1, x2, y2)
-                        self.broadcast(data.encode())
+                print(f"[{client_id}]로부터 데이터 수신: {data}")
             except Exception as e:
                 print(f"클라이언트 처리 중 오류: {e}")
                 break
         client_socket.close()
         clients.remove(client_socket)
+        del self.client_ids[client_socket]  # 클라이언트 연결 해제 시 ID 삭제
+    
 
     def broadcast(self, message):
         #클라이언트에게 데이터 전송
