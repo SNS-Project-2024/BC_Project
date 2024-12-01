@@ -84,7 +84,7 @@ class ServerDrawingApp(QMainWindow):
 
     def set_answer(self):
         answer = self.answer_input.text().strip()
-        if answer is not None:
+        if answer:
             self.answer = answer
             print(f"제시어가 설정되었습니다: {self.answer}")
             self.answer_input.clear()
@@ -119,6 +119,7 @@ class ServerDrawingApp(QMainWindow):
                     client_socket.sendall("SERVER:ALREADY".encode())
                 elif data == self.answer:
                     client_socket.sendall("RESULT:CORRECT".encode())
+                    self.scene.clear()
                     self.broadcast_to_others(client_socket, f"RESULT:ANSWER:{self.answer}")
                     self.reset_game()
                 else:
@@ -150,7 +151,6 @@ class ServerDrawingApp(QMainWindow):
 
     def reset_game(self):
         print("게임이 초기화됩니다.")
-        self.scene.clear()
         self.answer = None
 
     def closeEvent(self, event):
