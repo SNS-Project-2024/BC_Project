@@ -93,14 +93,16 @@ class ClientDrawingApp(QMainWindow):
                             self.draw_signal.emit(x1, y1, x2, y2)  # UI 갱신 요청
 
                 elif data.startswith("RESULT:CORRECT"):
-                    self.result_label.setText("정답입니다!")
                     self.scene.clear()
+                    self.result_label.setText("정답입니다!")
+                    
                 elif data.startswith("RESULT:WRONG"):
                     self.result_label.setText("틀렸습니다!")
                 elif data.startswith("RESULT:ANSWER:"):
+                    self.scene.clear()
                     correct_answer = data.split(":")[2]
                     self.result_label.setText(f"정답은 {correct_answer}입니다!")
-                    self.scene.clear()
+                    
                 elif data.startswith("SERVER:ALREADY"):
                     self.result_label.setText("제시어가 아직 설정되지 않았습니다.")
                 elif data.startswith("SEVER:SET"):
